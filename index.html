@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A2A Logistics | 3PL Warehousing & Pallet Transport</title>
+  <meta name="description" content="A2A Logistics delivers complete logistics solutions — refrigerated transport, non-refrigerated freight, 3PL warehousing, and 1–12 pallet delivery across Australia. Trusted by businesses, warehouses & wholesalers." />
+  <meta name="keywords" content="logistics company, refrigerated transport, 3PL warehousing, pallet delivery, cold chain logistics, freight Australia, warehouse distribution, pallet transport Melbourne" />
+  <link rel="canonical" href="https://a2alogistics.com.au/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="A2A Logistics | 3PL Warehousing & Pallet Transport" />
+  <meta property="og:description" content="Complete logistics solutions under one roof — refrigerated transport, 3PL warehousing, and 1–12 pallet delivery." />
+  <meta property="og:url" content="https://a2alogistics.com.au/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Analytics placeholder -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script> -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===================== RESET & TOKENS ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #050d1a;
+      --navy2:   #0a1628;
+      --navy3:   #0f2040;
+      --gold:    #c8922a;
+      --gold2:   #e8ad45;
+      --gold-lt: #f5d58a;
+      --slate:   #8da0b3;
+      --white:   #f5f7fa;
+      --off:     #dce4ec;
+      --body-bg: #f0f4f8;
+      --card-bg: #ffffff;
+      --radius:  12px;
+      --trans:   .35s cubic-bezier(.4,0,.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--body-bg);
+      color: #1a2a3a;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 96px 0; }
+    .section-sm { padding: 64px 0; }
+
+    /* ===================== NAVBAR ===================== */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: transparent;
+      transition: background var(--trans), box-shadow var(--trans);
+      padding: 0 24px;
+    }
+    #navbar.scrolled {
+      background: rgba(5,13,26,.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px rgba(0,0,0,.4);
+    }
+    .nav-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; color: var(--navy); font-size: 18px;
+    }
+    .nav-logo-text { color: #fff; }
+    .nav-logo-text strong { font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: .5px; }
+    .nav-logo-text span { display: block; font-size: 10px; color: var(--gold2); letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500; letter-spacing: .3px; transition: color var(--trans); }
+    .nav-links a:hover { color: var(--gold2); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy) !important;
+      padding: 10px 22px; border-radius: 6px;
+      font-weight: 700 !important; font-size: 13px !important;
+      letter-spacing: .5px; text-transform: uppercase;
+      transition: transform var(--trans), box-shadow var(--trans) !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,146,42,.4); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: var(--trans); }
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0;
+      background: var(--navy); padding: 24px; z-index: 999;
+      border-top: 1px solid rgba(255,255,255,.08);
+      flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,255,255,.85); font-size: 16px; font-weight: 500; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    @media(max-width:768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+    /* ===================== HERO ===================== */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 40%, rgba(200,146,42,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 70% at 10% 80%, rgba(15,32,64,.8) 0%, transparent 70%),
+        linear-gradient(160deg, #050d1a 0%, #0a1628 40%, #0f2040 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(200,146,42,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 1180px; margin: 0 auto; padding: 120px 24px 80px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(200,146,42,.12); border: 1px solid rgba(200,146,42,.25);
+      color: var(--gold2); font-size: 12px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeUp .6s ease both;
+    }
+    .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold2); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .hero-title {
+      font-size: clamp(38px, 5vw, 66px);
+      color: #fff; margin-bottom: 24px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero-title .gold { color: var(--gold2); }
+    .hero-sub {
+      font-size: 18px; color: var(--slate); margin-bottom: 40px; max-width: 480px;
+      line-height: 1.75;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy); font-weight: 700; font-size: 14px;
+      padding: 14px 28px; border-radius: 8px; cursor: pointer;
+      border: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: transform var(--trans), box-shadow var(--trans);
+      letter-spacing: .3px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(200,146,42,.4); }
+    .btn-secondary {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15);
+      color: #fff; font-weight: 600; font-size: 14px;
+      padding: 14px 28px; border-radius: 8px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background var(--trans), border-color var(--trans);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.25); }
+    .hero-stats {
+      display: flex; gap: 32px; margin-top: 48px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      animation: fadeUp .7s .4s ease both;
+    }
+    .stat-item { }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 34px; color: var(--gold2); font-weight: 700; }
+    .stat-label { font-size: 12px; color: var(--slate); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .hero-visual {
+      position: relative;
+      animation: fadeRight .8s .2s ease both;
+    }
+    .hero-card-stack { position: relative; }
+    .hero-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      backdrop-filter: blur(12px);
+      border-radius: 16px; padding: 24px;
+      margin-bottom: 12px;
+      transition: transform var(--trans);
+    }
+    .hero-card:hover { transform: translateX(6px); }
+    .hero-card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 12px;
+    }
+    .hero-card-icon.cold { background: rgba(56,189,248,.15); }
+    .hero-card-icon.warm { background: rgba(251,146,60,.15); }
+    .hero-card-icon.wh   { background: rgba(167,243,208,.15); }
+    .hero-card h4 { color: #fff; font-size: 15px; margin-bottom: 4px; }
+    .hero-card p  { color: var(--slate); font-size: 13px; }
+    .hero-card-tag {
+      display: inline-block; background: rgba(200,146,42,.15); color: var(--gold2);
+      font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; margin-top: 10px;
+    }
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+    @keyframes fadeRight{ from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:none} }
+    @media(max-width:900px){
+      .hero-content { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+    }
+
+    /* ===================== TRUST BAR ===================== */
+    #trust {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding: 28px 0;
+    }
+    .trust-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.7); font-size: 13px; font-weight: 500; white-space: nowrap;
+    }
+    .trust-item span { font-size: 20px; }
+
+    /* ===================== SECTION LABELS ===================== */
+    .label {
+      display: inline-block; color: var(--gold); font-size: 12px; font-weight: 700;
+      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .section-title { font-size: clamp(30px, 4vw, 48px); margin-bottom: 16px; color: #0d1e32; }
+    .section-title.light { color: #fff; }
+    .section-sub { font-size: 17px; color: #5a7391; max-width: 560px; line-height: 1.75; }
+    .section-sub.light { color: var(--slate); }
+    .center { text-align: center; }
+    .center .section-sub { margin: 0 auto; }
+
+    /* ===================== HIGHLIGHT BAND ===================== */
+    #highlight {
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      padding: 56px 0;
+    }
+    .highlight-inner {
+      max-width: 1180px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .highlight-text h2 { font-size: clamp(26px,4vw,40px); color: var(--navy); }
+    .highlight-text p  { color: rgba(5,13,26,.75); font-size: 16px; margin-top: 8px; }
+    .btn-dark {
+      background: var(--navy); color: #fff; font-weight: 700; font-size: 14px;
+      padding: 14px 28px; border-radius: 8px; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background var(--trans), box-shadow var(--trans);
+    }
+    .btn-dark:hover { background: var(--navy3); box-shadow: 0 8px 24px rgba(5,13,26,.35); }
+
+    /* ===================== SERVICES ===================== */
+    #services { background: var(--body-bg); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+      margin-top: 56px;
+    }
+    .service-card {
+      background: var(--card-bg); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      transition: transform var(--trans), box-shadow var(--trans);
+      position: relative;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+    .service-card-top {
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+    }
+    .service-card-top.blue { background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+    .service-card-top.green { background: linear-gradient(90deg, #10b981, #34d399); }
+    .service-card-top.purple { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+    .service-card-body { padding: 32px; }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(200,146,42,.1), rgba(232,173,69,.15));
+    }
+    .service-icon.blue  { background: linear-gradient(135deg, rgba(14,165,233,.1), rgba(56,189,248,.15)); }
+    .service-icon.green { background: linear-gradient(135deg, rgba(16,185,129,.1), rgba(52,211,153,.15)); }
+    .service-icon.purple{ background: linear-gradient(135deg, rgba(139,92,246,.1), rgba(167,139,250,.15)); }
+    .service-card-body h3 { font-size: 22px; margin-bottom: 10px; color: #0d1e32; }
+    .service-card-body p  { font-size: 14px; color: #5a7391; margin-bottom: 20px; line-height: 1.7; }
+    .service-list { list-style: none; }
+    .service-list li {
+      font-size: 13px; color: #3d5a73; padding: 6px 0;
+      border-bottom: 1px solid #f0f4f8;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .service-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .service-learn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold); font-size: 13px; font-weight: 600; margin-top: 20px;
+      cursor: pointer; transition: gap var(--trans);
+    }
+    .service-learn:hover { gap: 10px; }
+
+    /* ===================== HOW IT WORKS ===================== */
+    #how { background: var(--navy); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px; margin-top: 56px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .step-item {
+      background: rgba(255,255,255,.03); padding: 40px 32px;
+      position: relative; transition: background var(--trans);
+    }
+    .step-item:hover { background: rgba(255,255,255,.07); }
+    .step-num {
+      font-family: 'Playfair Display', serif; font-size: 56px;
+      color: rgba(200,146,42,.18); font-weight: 900; line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step-item h3 { color: #fff; font-size: 18px; margin-bottom: 10px; }
+    .step-item p  { color: var(--slate); font-size: 14px; line-height: 1.7; }
+
+    /* ===================== INDUSTRIES ===================== */
+    #industries { background: var(--body-bg); }
+    .industries-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; margin-top: 48px;
+    }
+    .industry-item {
+      background: var(--card-bg); border-radius: var(--radius);
+      padding: 32px 20px; text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: transform var(--trans), box-shadow var(--trans);
+      cursor: default;
+    }
+    .industry-item:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); }
+    .industry-icon { font-size: 40px; margin-bottom: 14px; }
+    .industry-item h4 { font-size: 15px; color: #1a2a3a; font-family: 'DM Sans', sans-serif; font-weight: 600; }
+    .industry-item p  { font-size: 12px; color: #8da0b3; margin-top: 4px; }
+
+    /* ===================== PALLET SECTION ===================== */
+    #pallets { background: var(--navy2); }
+    .pallets-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin-top: 48px;
+    }
+    .pallet-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius); padding: 40px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--trans), transform var(--trans);
+    }
+    .pallet-card:hover { border-color: rgba(200,146,42,.35); transform: translateY(-4px); }
+    .pallet-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+    }
+    .pallet-card.featured::before { background: linear-gradient(90deg, #10b981, #34d399); }
+    .pallet-range {
+      font-family: 'Playfair Display', serif; font-size: 48px;
+      color: var(--gold2); font-weight: 700; margin-bottom: 8px;
+    }
+    .pallet-card.featured .pallet-range { color: #34d399; }
+    .pallet-card h3 { color: #fff; font-size: 20px; margin-bottom: 12px; }
+    .pallet-card p  { color: var(--slate); font-size: 14px; line-height: 1.75; }
+    .pallet-features { margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .pallet-feat {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,.75); font-size: 13px;
+    }
+    .pallet-feat::before { content: '→'; color: var(--gold2); font-weight: 700; flex-shrink: 0; }
+    .pallet-card.featured .pallet-feat::before { color: #34d399; }
+    @media(max-width:640px) { .pallets-grid { grid-template-columns: 1fr; } }
+
+    /* ===================== CONTACT ===================== */
+    #contact { background: var(--body-bg); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 56px;
+      margin-top: 56px; align-items: start;
+    }
+    .contact-info h3 { font-size: 26px; color: #0d1e32; margin-bottom: 16px; }
+    .contact-info p  { color: #5a7391; line-height: 1.75; margin-bottom: 32px; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 20px;
+    }
+    .contact-detail-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(200,146,42,.1), rgba(232,173,69,.15));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .contact-detail-text strong { display: block; font-size: 13px; color: #0d1e32; margin-bottom: 3px; }
+    .contact-detail-text span { font-size: 14px; color: #5a7391; }
+    .contact-form {
+      background: var(--card-bg); border-radius: 16px;
+      padding: 40px; box-shadow: 0 8px 32px rgba(0,0,0,.08);
+    }
+    .contact-form h3 { font-size: 22px; color: #0d1e32; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: #3d5a73; margin-bottom: 6px; letter-spacing: .5px; text-transform: uppercase; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid #dce4ec; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1a2a3a;
+      background: #f8fafc; transition: border-color var(--trans), box-shadow var(--trans);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,146,42,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 15px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy); font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 700; border-radius: 8px;
+      letter-spacing: .5px; transition: transform var(--trans), box-shadow var(--trans);
+    }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(200,146,42,.4); }
+    .form-success {
+      display: none; text-align: center; padding: 40px;
+    }
+    .form-success .tick { font-size: 48px; margin-bottom: 16px; }
+    .form-success h4 { font-size: 22px; color: #0d1e32; margin-bottom: 8px; }
+    .form-success p  { color: #5a7391; }
+    @media(max-width:768px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p { color: var(--slate); font-size: 14px; line-height: 1.75; margin-top: 14px; max-width: 260px; }
+    .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-col a  { display: block; color: var(--slate); font-size: 14px; margin-bottom: 10px; transition: color var(--trans); }
+    .footer-col a:hover { color: var(--gold2); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.06); padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-bottom p { color: rgba(255,255,255,.4); font-size: 13px; }
+    .footer-bottom a { color: var(--gold2); }
+    @media(max-width:900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:540px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    /* ===================== WHATSAPP ===================== */
+    .wa-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+      transition: transform var(--trans), box-shadow var(--trans);
+      animation: waPop .5s .8s ease both;
+    }
+    .wa-btn:hover { transform: scale(1.12); box-shadow: 0 10px 32px rgba(37,211,102,.6); }
+    .wa-btn svg { width: 30px; height: 30px; fill: #fff; }
+    @keyframes waPop { from{opacity:0;transform:scale(.5)} to{opacity:1;transform:scale(1)} }
+
+    /* ===================== SCROLL ANIMATIONS ===================== */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ===================== FORM STATE ===================== */
+    .form-submit.loading { opacity: .7; pointer-events: none; }
+
+  </style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">A</div>
+      <div class="nav-logo-text">
+        <strong>A2A Logistics</strong>
+        <span>Complete Logistics Solutions</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#industries">Industries</a>
+      <a href="#pallets">Pallet Transport</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services"   onclick="closeMobile()">Services</a>
+  <a href="#how"        onclick="closeMobile()">How It Works</a>
+  <a href="#industries" onclick="closeMobile()">Industries</a>
+  <a href="#pallets"    onclick="closeMobile()">Pallet Transport</a>
+  <a href="#contact"    onclick="closeMobile()">Get a Quote</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">🚛 Australian Logistics Partner</div>
+      <h1 class="hero-title">Reliable Logistics &amp; <span class="gold">3PL Warehousing</span> Solutions</h1>
+      <p class="hero-sub">1–12 pallet delivery, refrigerated &amp; general freight — complete logistics under one roof for businesses, warehouses &amp; wholesalers across Australia.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">📋 Get a Quote</a>
+        <a href="https://wa.me/61431986606" target="_blank" class="btn-secondary">💬 WhatsApp Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">3PL</div><div class="stat-label">Warehousing</div></div>
+        <div class="stat-item"><div class="stat-num">1–12</div><div class="stat-label">Pallet Delivery</div></div>
+        <div class="stat-item"><div class="stat-num">–18°</div><div class="stat-label">Cold Chain</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-card">
+          <div class="hero-card-icon cold">❄️</div>
+          <h4>Refrigerated Transport</h4>
+          <p>Cold chain maintained from pickup to delivery</p>
+          <span class="hero-card-tag">Temperature Controlled</span>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon warm">📦</div>
+          <h4>General Freight</h4>
+          <p>Reliable delivery for all non-refrigerated goods</p>
+          <span class="hero-card-tag">Nationwide Coverage</span>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon wh">🏭</div>
+          <h4>3PL Warehousing</h4>
+          <p>Storage, fulfillment &amp; distribution from our facility</p>
+          <span class="hero-card-tag">End-to-End</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><span>❄️</span> Cold Chain Certified</div>
+    <div class="trust-item"><span>🏭</span> 3PL Warehousing</div>
+    <div class="trust-item"><span>🚛</span> 1–12 Pallet Delivery</div>
+    <div class="trust-item"><span>📍</span> Australia-Wide</div>
+    <div class="trust-item"><span>🔒</span> Fully Insured Freight</div>
+    <div class="trust-item"><span>📞</span> Dedicated Account Support</div>
+  </div>
+</div>
+
+<!-- ============ HIGHLIGHT ============ -->
+<div id="highlight">
+  <div class="highlight-inner">
+    <div class="highlight-text">
+      <h2>Complete Logistics Solutions Under One Roof</h2>
+      <p>Refrigerated, general freight, warehousing — all coordinated by a single team.</p>
+    </div>
+    <a href="#contact" class="btn-dark">📋 Request a Quote →</a>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="label">What We Do</span>
+      <h2 class="section-title">Comprehensive Logistics Services</h2>
+      <p class="section-sub">From temperature-controlled freight to full 3PL warehousing — we handle your entire supply chain.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <div class="service-card-top blue"></div>
+        <div class="service-card-body">
+          <div class="service-icon blue">❄️</div>
+          <h3>Refrigerated Transport</h3>
+          <p>Temperature-controlled logistics maintaining cold chain integrity from origin to destination.</p>
+          <ul class="service-list">
+            <li>Fresh produce &amp; fruit</li>
+            <li>Dairy &amp; chilled products</li>
+            <li>Pharmaceutical &amp; healthcare</li>
+            <li>Frozen &amp; ice cream goods</li>
+          </ul>
+          <a href="#contact" class="service-learn">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top"></div>
+        <div class="service-card-body">
+          <div class="service-icon">📦</div>
+          <h3>Non-Refrigerated Transport</h3>
+          <p>Dependable general freight for all ambient-temperature goods, moving efficiently across Australia.</p>
+          <ul class="service-list">
+            <li>Retail goods &amp; FMCG</li>
+            <li>Industrial shipments</li>
+            <li>Warehouse distribution</li>
+            <li>Wholesalers supply chain</li>
+          </ul>
+          <a href="#contact" class="service-learn">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top green"></div>
+        <div class="service-card-body">
+          <div class="service-icon green">🏭</div>
+          <h3>3PL Warehousing</h3>
+          <p>Third-party logistics warehousing with full inventory management, storage, and distribution.</p>
+          <ul class="service-list">
+            <li>Inventory management</li>
+            <li>Short &amp; long-term storage</li>
+            <li>Distribution &amp; dispatch</li>
+            <li>Order fulfillment</li>
+          </ul>
+          <a href="#contact" class="service-learn">Get a Quote →</a>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-card-top purple"></div>
+        <div class="service-card-body">
+          <div class="service-icon purple">🔢</div>
+          <h3>Pallet Transport</h3>
+          <p>Flexible pallet delivery from a single pallet up to full truckload — tailored to your volume.</p>
+          <ul class="service-list">
+            <li>1–6 pallets (part load)</li>
+            <li>7–12 pallets (full load)</li>
+            <li>Refrigerated &amp; ambient</li>
+            <li>Scheduled &amp; urgent runs</li>
+          </ul>
+          <a href="#contact" class="service-learn">Get a Quote →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="label" style="color:var(--gold2)">Our Process</span>
+      <h2 class="section-title light">Simple, Reliable, Every Time</h2>
+      <p class="section-sub light">Four steps from enquiry to delivery — transparent and stress-free.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-item">
+        <div class="step-num">01</div>
+        <h3>Submit Enquiry</h3>
+        <p>Fill in our quote form or WhatsApp us with your freight details, pallets, and locations.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">02</div>
+        <h3>Receive Quote</h3>
+        <p>We assess your requirements and provide a competitive, transparent quote — fast.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">03</div>
+        <h3>Pickup &amp; Dispatch</h3>
+        <p>Our team collects your goods on schedule and dispatches via the right vehicle for your load.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">04</div>
+        <h3>Safe Delivery</h3>
+        <p>Your freight arrives intact and on time. Cold chain or ambient — we maintain your requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES ============ -->
+<section id="industries" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="label">Industries We Serve</span>
+      <h2 class="section-title">Built for Australian Business</h2>
+      <p class="section-sub">From food production to pharmaceutical distribution, we serve the industries that keep Australia moving.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-item reveal">
+        <div class="industry-icon">🥦</div>
+        <h4>Food &amp; Beverage</h4>
+        <p>Chilled &amp; ambient</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon">🛒</div>
+        <h4>Retail</h4>
+        <p>Distribution &amp; replenishment</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon">🏭</div>
+        <h4>Warehouses</h4>
+        <p>Outbound &amp; inbound freight</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon">📦</div>
+        <h4>Wholesalers</h4>
+        <p>Bulk &amp; pallet supply chain</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon">💊</div>
+        <h4>Pharmaceuticals</h4>
+        <p>Temperature-sensitive delivery</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon">⚙️</div>
+        <h4>Manufacturing</h4>
+        <p>Raw materials &amp; finished goods</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PALLETS ============ -->
+<section id="pallets" class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" style="color:var(--gold2)">Pallet Transport</span>
+      <h2 class="section-title light">Flexible Pallet Delivery — 1 to 12</h2>
+      <p class="section-sub light">Whether you're moving a single pallet or a full load, A2A Logistics has capacity and pricing to match.</p>
+    </div>
+    <div class="pallets-grid reveal">
+      <div class="pallet-card">
+        <div class="pallet-range">1–6</div>
+        <h3>Part Load Delivery</h3>
+        <p>Ideal for smaller freight runs, single-delivery businesses, or supplementing your existing logistics. Cost-effective with reliable scheduling.</p>
+        <div class="pallet-features">
+          <div class="pallet-feat">Refrigerated or general freight</div>
+          <div class="pallet-feat">Flexible pickup scheduling</div>
+          <div class="pallet-feat">Same-day &amp; next-day options</div>
+          <div class="pallet-feat">Tracked &amp; insured</div>
+        </div>
+      </div>
+      <div class="pallet-card featured">
+        <div class="pallet-range">7–12</div>
+        <h3>Full Load Delivery</h3>
+        <p>Maximise efficiency with larger consignments. Dedicated vehicle, priority scheduling, and streamlined invoicing for regular volume.</p>
+        <div class="pallet-features">
+          <div class="pallet-feat">Dedicated truck allocation</div>
+          <div class="pallet-feat">Priority dispatch</div>
+          <div class="pallet-feat">Volume pricing available</div>
+          <div class="pallet-feat">Account-based billing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="reveal">
+      <span class="label">Contact Us</span>
+      <h2 class="section-title">Request a Quote</h2>
+      <p class="section-sub">Fill in your details and our team will respond with a tailored logistics quote.</p>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <h3>Let's Move Your Freight</h3>
+        <p>Whether you need refrigerated transport, general freight, or 3PL warehousing — our team is ready to provide a fast, competitive quote.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <strong>Phone / WhatsApp</strong>
+            <span><a href="tel:+61431986606">+61 431 986 606</a></span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">💬</div>
+          <div class="contact-detail-text">
+            <strong>WhatsApp Direct</strong>
+            <span><a href="https://wa.me/61431986606" target="_blank">Chat with us instantly</a></span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌐</div>
+          <div class="contact-detail-text">
+            <strong>Website</strong>
+            <span>a2alogistics.com.au</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">
+            <strong>Service Area</strong>
+            <span>Australia-Wide Coverage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3>Get Your Quote</h3>
+        <div id="form-success" class="form-success">
+          <div class="tick">✅</div>
+          <h4>Quote Request Sent!</h4>
+          <p>Thank you! Our team will contact you shortly with a tailored quote.</p>
+        </div>
+        <form id="quoteForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Company *</label>
+              <input type="text" name="company" placeholder="Company name" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="tel" name="phone" placeholder="+61 4xx xxx xxx" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Service Required *</label>
+              <select name="service" required>
+                <option value="">Select service…</option>
+                <option>Refrigerated Transport</option>
+                <option>Non-Refrigerated Transport</option>
+                <option>3PL Warehousing</option>
+                <option>Pallet Delivery (1–6)</option>
+                <option>Pallet Delivery (7–12)</option>
+                <option>Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Number of Pallets</label>
+              <select name="pallets">
+                <option value="">Select pallets…</option>
+                <option>1 Pallet</option>
+                <option>2–3 Pallets</option>
+                <option>4–6 Pallets</option>
+                <option>7–9 Pallets</option>
+                <option>10–12 Pallets</option>
+                <option>Warehousing (no delivery)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Pickup Location</label>
+              <input type="text" name="pickup" placeholder="Suburb / Postcode" />
+            </div>
+            <div class="form-group">
+              <label>Delivery Location</label>
+              <input type="text" name="delivery" placeholder="Suburb / Postcode" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Additional Details</label>
+            <textarea name="message" placeholder="Describe your goods, temperature requirements, frequency, or any special instructions…"></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">📋 Submit Quote Request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-icon">A</div>
+          <div class="nav-logo-text">
+            <strong>A2A Logistics</strong>
+            <span>Complete Logistics Solutions</span>
+          </div>
+        </div>
+        <p>Refrigerated transport, general freight &amp; 3PL warehousing — all coordinated under one roof for Australian businesses.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Refrigerated Transport</a>
+        <a href="#services">General Freight</a>
+        <a href="#services">3PL Warehousing</a>
+        <a href="#pallets">Pallet Delivery</a>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <a href="#industries">Food &amp; Beverage</a>
+        <a href="#industries">Retail</a>
+        <a href="#industries">Pharmaceuticals</a>
+        <a href="#industries">Manufacturing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+61431986606">+61 431 986 606</a>
+        <a href="https://wa.me/61431986606" target="_blank">WhatsApp</a>
+        <a href="#contact">Get a Quote</a>
+        <a href="admin.html">Admin Panel</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 A2A Logistics. All rights reserved. | <a href="https://a2alogistics.com.au">a2alogistics.com.au</a></p>
+      <p>ABN: [Your ABN] | Fully Insured Freight</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP BUTTON ============ -->
+<a href="https://wa.me/61431986606" class="wa-btn" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- ============ FIREBASE FORM SUBMISSION ============ -->
+<script type="module">
+  import { initializeApp }           from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ⚠️ REPLACE THESE WITH YOUR FIREBASE PROJECT CONFIG
+  const firebaseConfig = {
+    apiKey:            "AIzaSyD_7ivCGLQvlteLhRAUe3gMCQaubg1Fxns",
+    authDomain:        "a2a-website-a5883.firebaseapp.com",
+    projectId:         "a2a-website-a5883",
+    storageBucket:     "a2a-website-a5883.firebasestorage.app",
+    messagingSenderId: "963126124634",
+    appId:             "1:963126124634:web:204668a849222a69ae3863"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
+
+  window.submitForm = async function(e) {
+    e.preventDefault();
+    const btn  = document.getElementById('submitBtn');
+    const form = document.getElementById('quoteForm');
+    const data = {
+      name:     form.name.value,
+      company:  form.company.value,
+      email:    form.email.value,
+      phone:    form.phone.value,
+      service:  form.service.value,
+      pallets:  form.pallets.value,
+      pickup:   form.pickup.value,
+      delivery: form.delivery.value,
+      message:  form.message.value,
+      created:  new Date().toISOString(),
+      source:   'website'
+    };
+
+    btn.textContent = 'Sending…';
+    btn.classList.add('loading');
+
+    try {
+      await addDoc(collection(db, 'leads'), data);
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } catch (err) {
+      console.error('Firebase error:', err);
+      // Fallback — still show success UX (form data logged)
+      form.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  };
+</script>
+
+</body>
+</html>

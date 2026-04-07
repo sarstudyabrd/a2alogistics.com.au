@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A2A Logistics — Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #050d1a;
+      --navy2:  #0a1628;
+      --gold:   #c8922a;
+      --gold2:  #e8ad45;
+      --slate:  #8da0b3;
+      --bg:     #f0f4f8;
+      --card:   #ffffff;
+      --border: #dce4ec;
+      --text:   #1a2a3a;
+      --sub:    #5a7391;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* HEADER */
+    header {
+      background: var(--navy);
+      padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.4);
+    }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .header-logo-icon {
+      width: 36px; height: 36px; border-radius: 7px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; color: var(--navy); font-size: 16px;
+    }
+    .header-logo span { color: #fff; font-weight: 700; font-size: 16px; }
+    .header-logo small { color: var(--gold2); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; display: block; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .header-right a { color: rgba(255,255,255,.6); font-size: 13px; text-decoration: none; transition: color .2s; }
+    .header-right a:hover { color: var(--gold2); }
+    .badge-count {
+      background: var(--gold); color: var(--navy);
+      font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* MAIN */
+    main { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+
+    /* STATS ROW */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .stat-card {
+      background: var(--card); border-radius: 12px; padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      border-top: 3px solid var(--gold);
+    }
+    .stat-card.blue   { border-top-color: #0ea5e9; }
+    .stat-card.green  { border-top-color: #10b981; }
+    .stat-card.purple { border-top-color: #8b5cf6; }
+    .stat-num2 { font-size: 36px; font-weight: 700; color: var(--text); }
+    .stat-label2 { font-size: 12px; color: var(--sub); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* TOOLBAR */
+    .toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+    }
+    .toolbar h2 { font-size: 20px; color: var(--text); }
+    .toolbar-right { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-export {
+      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid var(--border); background: var(--card);
+      color: var(--sub); transition: all .2s; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-export:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-refresh {
+      padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; border: none;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy); display: inline-flex; align-items: center; gap: 6px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-refresh:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(200,146,42,.4); }
+
+    /* FILTER BAR */
+    .filter-bar {
+      display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .filter-bar input, .filter-bar select {
+      padding: 9px 14px; border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text);
+      background: var(--card); outline: none;
+      transition: border-color .2s;
+    }
+    .filter-bar input:focus, .filter-bar select:focus { border-color: var(--gold); }
+    .filter-bar input { min-width: 220px; }
+
+    /* TABLE */
+    .table-wrap {
+      background: var(--card); border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead th {
+      background: var(--navy); color: rgba(255,255,255,.75); font-size: 11px;
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      padding: 14px 16px; text-align: left; white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fafc; }
+    td { padding: 14px 16px; color: var(--text); vertical-align: middle; }
+    td.sub { color: var(--sub); }
+    .service-badge {
+      display: inline-block; padding: 3px 10px; border-radius: 100px;
+      font-size: 11px; font-weight: 600; white-space: nowrap;
+    }
+    .badge-cold   { background: rgba(14,165,233,.12); color: #0ea5e9; }
+    .badge-gen    { background: rgba(200,146,42,.12);  color: var(--gold); }
+    .badge-wh     { background: rgba(16,185,129,.12);  color: #10b981; }
+    .badge-pallet { background: rgba(139,92,246,.12);  color: #8b5cf6; }
+    .badge-multi  { background: rgba(239,68,68,.12);   color: #ef4444; }
+
+    /* LOADING / EMPTY */
+    .loading-row, .empty-row {
+      text-align: center; padding: 60px; color: var(--sub);
+    }
+    .spinner {
+      display: inline-block; width: 32px; height: 32px;
+      border: 3px solid var(--border); border-top-color: var(--gold);
+      border-radius: 50%; animation: spin .7s linear infinite; margin-bottom: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(5,13,26,.75); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card); border-radius: 16px; padding: 40px;
+      max-width: 560px; width: 90%; box-shadow: 0 24px 80px rgba(0,0,0,.4);
+      position: relative; max-height: 90vh; overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--border); border: none; border-radius: 6px;
+      width: 32px; height: 32px; cursor: pointer; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .modal-close:hover { background: #d0d8e0; }
+    .modal h3 { font-size: 20px; margin-bottom: 20px; color: var(--text); }
+    .detail-row { display: flex; flex-direction: column; margin-bottom: 14px; }
+    .detail-row label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--sub); margin-bottom: 4px; }
+    .detail-row span  { font-size: 14px; color: var(--text); }
+
+    /* NO FIREBASE MESSAGE */
+    .firebase-note {
+      background: rgba(200,146,42,.08); border: 1px solid rgba(200,146,42,.25);
+      border-radius: 10px; padding: 16px 20px; margin-bottom: 20px;
+      font-size: 13px; color: #7a5a10; line-height: 1.6;
+    }
+    .firebase-note strong { color: var(--gold); }
+
+    @media(max-width:768px) {
+      table { display: block; overflow-x: auto; }
+      .toolbar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-logo">
+    <div class="header-logo-icon">A</div>
+    <div>
+      <span>A2A Logistics</span>
+      <small>Admin Panel</small>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="badge-count" id="leadCount">Loading…</span>
+    <a href="index.html">← Back to Site</a>
+  </div>
+</header>
+
+<main>
+
+  <div class="firebase-note" id="firebaseNote" style="display:none">
+    ⚠️ <strong>Firebase not configured.</strong> Replace <code>YOUR_API_KEY</code>, <code>YOUR_PROJECT_ID</code> etc. in both <code>index.html</code> and <code>admin.html</code> with your real Firebase project credentials. Then enable Firestore in your Firebase console.
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num2" id="totalLeads">—</div>
+      <div class="stat-label2">Total Leads</div>
+    </div>
+    <div class="stat-card blue">
+      <div class="stat-num2" id="coldLeads">—</div>
+      <div class="stat-label2">Refrigerated</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-num2" id="whLeads">—</div>
+      <div class="stat-label2">Warehousing</div>
+    </div>
+    <div class="stat-card purple">
+      <div class="stat-num2" id="todayLeads">—</div>
+      <div class="stat-label2">Today</div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <h2>📋 Lead Enquiries</h2>
+    <div class="toolbar-right">
+      <button class="btn-export" onclick="exportCSV()">⬇ Export CSV</button>
+      <button class="btn-refresh" onclick="loadLeads()">↻ Refresh</button>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search name, company, email…" oninput="filterLeads()" />
+    <select id="serviceFilter" onchange="filterLeads()">
+      <option value="">All Services</option>
+      <option>Refrigerated Transport</option>
+      <option>Non-Refrigerated Transport</option>
+      <option>3PL Warehousing</option>
+      <option>Pallet Delivery (1–6)</option>
+      <option>Pallet Delivery (7–12)</option>
+      <option>Multiple Services</option>
+    </select>
+  </div>
+
+  <div class="table-wrap">
+    <table id="leadsTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Company</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Service</th>
+          <th>Pallets</th>
+          <th>Pickup</th>
+          <th>Delivery</th>
+          <th>Date</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody id="leadsBody">
+        <tr>
+          <td colspan="11" class="loading-row">
+            <div class="spinner"></div>
+            <div>Loading leads from Firebase…</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Lead Details</h3>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, getDocs, orderBy, query }
+                              from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  // ⚠️ REPLACE WITH YOUR FIREBASE CONFIG
+  const firebaseConfig = {
+    apiKey:            "AIzaSyD_7ivCGLQvlteLhRAUe3gMCQaubg1Fxns",
+    authDomain:        "a2a-website-a5883.firebaseapp.com",
+    projectId:         "a2a-website-a5883",
+    storageBucket:     "a2a-website-a5883.firebasestorage.app",
+    messagingSenderId: "963126124634",
+    appId:             "1:963126124634:web:204668a849222a69ae3863"
+  };
+
+  let allLeads = [];
+
+  const isPlaceholder = firebaseConfig.apiKey === "YOUR_API_KEY";
+
+  if (isPlaceholder) {
+    document.getElementById('firebaseNote').style.display = 'block';
+    showDemoData();
+  } else {
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    window.loadLeads = async function () {
+      document.getElementById('leadsBody').innerHTML = `<tr><td colspan="11" class="loading-row"><div class="spinner"></div><div>Loading…</div></td></tr>`;
+      try {
+        const q = query(collection(db, 'leads'), orderBy('created', 'desc'));
+        const snap = await getDocs(q);
+        allLeads = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        renderTable(allLeads);
+        updateStats(allLeads);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('leadsBody').innerHTML = `<tr><td colspan="11" class="loading-row" style="color:#ef4444">❌ Error loading data: ${err.message}</td></tr>`;
+      }
+    };
+
+    window.loadLeads();
+  }
+
+  function showDemoData() {
+    allLeads = [
+      { id:'demo1', name:'John Smith',   company:'Fresh Foods Pty Ltd', email:'john@freshfoods.com.au', phone:'0412 345 678', service:'Refrigerated Transport', pallets:'4–6 Pallets',         pickup:'Dandenong VIC',    delivery:'Sydney NSW',   message:'Weekly dairy run, temp -2 to 4°C',     created: new Date().toISOString() },
+      { id:'demo2', name:'Sarah Lee',    company:'Wholesale Direct',    email:'sarah@wdirect.com.au',  phone:'0423 456 789', service:'3PL Warehousing',          pallets:'Warehousing (no delivery)', pickup:'N/A',        delivery:'N/A',          message:'Need 200 sqm storage + fulfillment',   created: new Date(Date.now()-86400000).toISOString() },
+      { id:'demo3', name:'Mike Chen',    company:'Retail Xpress',       email:'mike@rxpress.com.au',   phone:'0434 567 890', service:'Non-Refrigerated Transport',pallets:'2–3 Pallets',        pickup:'Melbourne CBD', delivery:'Brisbane QLD', message:'Retail fixtures, fragile, urgent',       created: new Date(Date.now()-172800000).toISOString() },
+      { id:'demo4', name:'Anna Torres',  company:'PharmaDist AU',       email:'anna@pharmadist.com',   phone:'0445 678 901', service:'Refrigerated Transport',   pallets:'1 Pallet',           pickup:'Tullamarine VIC',  delivery:'Adelaide SA',  message:'Pharmaceutical, strict cold chain req.', created: new Date(Date.now()-259200000).toISOString() },
+    ];
+    renderTable(allLeads);
+    updateStats(allLeads);
+    window.loadLeads = () => { renderTable(allLeads); updateStats(allLeads); };
+  }
+
+  function updateStats(leads) {
+    const today = new Date().toDateString();
+    document.getElementById('totalLeads').textContent = leads.length;
+    document.getElementById('coldLeads').textContent  = leads.filter(l => l.service && l.service.includes('Refrigerated')).length;
+    document.getElementById('whLeads').textContent    = leads.filter(l => l.service && l.service.includes('Warehousing')).length;
+    document.getElementById('todayLeads').textContent = leads.filter(l => new Date(l.created).toDateString() === today).length;
+    document.getElementById('leadCount').textContent  = `${leads.length} Leads`;
+  }
+
+  function serviceBadge(s) {
+    if (!s) return '<span class="service-badge badge-gen">—</span>';
+    if (s.includes('Refriger'))   return `<span class="service-badge badge-cold">❄️ ${s}</span>`;
+    if (s.includes('Warehousing'))return `<span class="service-badge badge-wh">🏭 ${s}</span>`;
+    if (s.includes('Pallet'))     return `<span class="service-badge badge-pallet">🔢 ${s}</span>`;
+    if (s.includes('Multiple'))   return `<span class="service-badge badge-multi">🔗 ${s}</span>`;
+    return `<span class="service-badge badge-gen">📦 ${s}</span>`;
+  }
+
+  function fmt(d) {
+    if (!d) return '—';
+    try { return new Date(d).toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
+    catch { return d; }
+  }
+
+  function renderTable(leads) {
+    const tbody = document.getElementById('leadsBody');
+    if (!leads.length) {
+      tbody.innerHTML = `<tr><td colspan="11" class="empty-row">📭 No leads found.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = leads.map((l, i) => `
+      <tr>
+        <td class="sub">${i + 1}</td>
+        <td><strong>${esc(l.name)}</strong></td>
+        <td>${esc(l.company)}</td>
+        <td><a href="mailto:${esc(l.email)}" style="color:var(--gold)">${esc(l.email)}</a></td>
+        <td><a href="tel:${esc(l.phone)}">${esc(l.phone)}</a></td>
+        <td>${serviceBadge(l.service)}</td>
+        <td class="sub">${esc(l.pallets) || '—'}</td>
+        <td class="sub">${esc(l.pickup) || '—'}</td>
+        <td class="sub">${esc(l.delivery) || '—'}</td>
+        <td class="sub" style="white-space:nowrap">${fmt(l.created)}</td>
+        <td><button onclick='openModal(${JSON.stringify(l)})' style="background:var(--gold);color:var(--navy);border:none;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">View</button></td>
+      </tr>`).join('');
+  }
+
+  function esc(s) { return s ? String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; }
+
+  window.filterLeads = function () {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const sv = document.getElementById('serviceFilter').value;
+    const filtered = allLeads.filter(l => {
+      const match = !q || [l.name, l.company, l.email, l.phone, l.message].some(f => f && String(f).toLowerCase().includes(q));
+      const sMatch = !sv || l.service === sv;
+      return match && sMatch;
+    });
+    renderTable(filtered);
+  };
+
+  window.openModal = function(lead) {
+    document.getElementById('modalContent').innerHTML = `
+      <div class="detail-row"><label>Name</label><span>${esc(lead.name)}</span></div>
+      <div class="detail-row"><label>Company</label><span>${esc(lead.company)}</span></div>
+      <div class="detail-row"><label>Email</label><span><a href="mailto:${esc(lead.email)}" style="color:var(--gold)">${esc(lead.email)}</a></span></div>
+      <div class="detail-row"><label>Phone</label><span><a href="tel:${esc(lead.phone)}">${esc(lead.phone)}</a></span></div>
+      <div class="detail-row"><label>Service</label><span>${esc(lead.service)}</span></div>
+      <div class="detail-row"><label>Pallets</label><span>${esc(lead.pallets) || '—'}</span></div>
+      <div class="detail-row"><label>Pickup</label><span>${esc(lead.pickup) || '—'}</span></div>
+      <div class="detail-row"><label>Delivery</label><span>${esc(lead.delivery) || '—'}</span></div>
+      <div class="detail-row"><label>Message</label><span>${esc(lead.message) || '—'}</span></div>
+      <div class="detail-row"><label>Submitted</label><span>${fmt(lead.created)}</span></div>
+    `;
+    document.getElementById('modalOverlay').classList.add('open');
+  };
+
+  window.closeModal = function(e) {
+    if (!e || e.target === document.getElementById('modalOverlay') || e.currentTarget.classList.contains('modal-close')) {
+      document.getElementById('modalOverlay').classList.remove('open');
+    }
+  };
+
+  window.exportCSV = function () {
+    const headers = ['Name','Company','Email','Phone','Service','Pallets','Pickup','Delivery','Message','Date'];
+    const rows = allLeads.map(l => [
+      l.name, l.company, l.email, l.phone, l.service, l.pallets, l.pickup, l.delivery, l.message, fmt(l.created)
+    ].map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(','));
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `a2a-leads-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+  };
+</script>
+</body>
+</html>
